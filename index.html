@@ -1,12 +1,154 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>джег</title>
+    <title>СТРАШНЫЙ ТЕКСТ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            background: black;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Courier New', 'Lucida Sans Typewriter', monospace;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* ОСНОВНОЙ СТРАШНЫЙ h1 */
+        .horror-h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #8b0000;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            margin-bottom: 2rem;
+            
+            /* кровавое свечение */
+            text-shadow: 
+                0 0 5px #ff0000,
+                0 0 10px #ff0000,
+                0 0 20px #8b0000,
+                0 0 40px #440000,
+                0 0 80px #220000;
+            
+            /* дрожь текста */
+            animation: shakeText 0.08s infinite;
+        }
+
+        /* второй страшный заголовок */
+        .horror-h1-second {
+            font-size: 2.5rem;
+            color: #aa2222;
+            text-shadow: 0 0 8px red, 0 0 15px #660000;
+            animation: flickerBlur 1.5s infinite;
+            letter-spacing: 4px;
+            margin-top: 1rem;
+        }
+
+        /* третий — с улыбкой */
+        .horror-h1-third {
+            font-size: 2rem;
+            color: #550000;
+            text-shadow: 0 0 5px #8b0000;
+            animation: pulseRed 2s infinite;
+            margin-top: 2rem;
+            border-top: 2px solid #2a0000;
+            padding-top: 2rem;
+        }
+
+        /* ДРОЖАНИЕ */
+        @keyframes shakeText {
+            0% { transform: translate(0, 0); }
+            20% { transform: translate(-1px, 1px); }
+            40% { transform: translate(1px, -1px); }
+            60% { transform: translate(-1px, 0px); }
+            80% { transform: translate(1px, 1px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        /* МЕРЦАНИЕ С РАЗМЫТИЕМ */
+        @keyframes flickerBlur {
+            0% { 
+                opacity: 0.8;
+                text-shadow: 0 0 2px red;
+                letter-spacing: 4px;
+            }
+            50% { 
+                opacity: 1;
+                text-shadow: 0 0 15px #ff3333, 0 0 25px darkred;
+                letter-spacing: 6px;
+            }
+            100% { 
+                opacity: 0.8;
+                text-shadow: 0 0 2px red;
+                letter-spacing: 4px;
+            }
+        }
+
+        /* ПУЛЬСАЦИЯ КРОВИ */
+        @keyframes pulseRed {
+            0% {
+                text-shadow: 0 0 2px #8b0000;
+                opacity: 0.7;
+            }
+            100% {
+                text-shadow: 0 0 15px #ff0000, 0 0 25px #8b0000;
+                opacity: 1;
+            }
+        }
+
+        /* дополнительный глитч-эффект при наведении */
+        .horror-h1:hover {
+            animation: glitch 0.3s infinite;
+            cursor: crosshair;
+        }
+
+        @keyframes glitch {
+            0% { transform: skew(0deg, 0deg); text-shadow: 0 0 5px red; }
+            25% { transform: skew(2deg, 1deg); text-shadow: -2px 0 red, 2px 0 darkred; }
+            50% { transform: skew(-2deg, -1deg); text-shadow: 2px 0 red, -2px 0 #440000; }
+            75% { transform: skew(1deg, 0deg); text-shadow: 0 0 10px red; }
+            100% { transform: skew(0deg, 0deg); text-shadow: 0 0 5px red; }
+        }
+
+        /* полосатый шум поверх */
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.6) 0px,
+                rgba(0, 0, 0, 0.6) 2px,
+                transparent 2px,
+                transparent 6px
+            );
+            pointer-events: none;
+            z-index: 10;
+            opacity: 0.5;
+        }
+    </style>
 </head>
-<body style="background-color: black;">
-    <h1 style="color: red;">что тебе надо сыллка та робочая (в стим ээто мой 18 акк (я устал донатить))</h1>
+<body>
+    <div class="container">
+        <h1 class="horror-h1">ТЫ ДУМАЛ ТАК ПРОСТО?</h1>
+        <h1 class="horror-h1-second">НАЙДИ ЧЁРНУЮ ТОЧКУ</h1>
+        <h1 class="horror-h1-third">ТОГДА ЗАЙДЁШЬ В МИР :)</h1>
+    </div>
+    <div class="noise"></div>
 </body>
 </html>
